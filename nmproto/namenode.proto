@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+
+option go_package = "/nmproto";
+
+package namenode;
+
+message Playersmoves {
+    string round = 1;
+    string playerMoves = 2;
+}
+
+message Playermove{
+    string moves = 1;
+    string round = 2;
+    string player = 3;
+}
+
+message Status{
+    string status = 1;
+}
+
+service StartServer{
+    rpc nameNodeStorePlayersMoves(Playersmoves) returns (Status) {}
+    rpc dataNodeStoreMove(Playermove) returns (Status) {}
+}
